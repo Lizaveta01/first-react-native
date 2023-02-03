@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../../constants/colors';
+import {Colours} from '../../constants/colours';
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     borderRadius: 10,
-    backgroundColor: Colors.BACKGROUND_LIGHT,
+    backgroundColor: Colours.BACKGROUND_LIGHT,
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     width: '20%',
     height: '24%',
-    backgroundColor: Colors.GREEN,
+    backgroundColor: Colours.GREEN,
     top: 0,
     left: 0,
     borderTopLeftRadius: 10,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
   offPercentag: {
     fontSize: 12,
-    color: Colors.WHITE,
+    color: Colours.WHITE,
     fontWeight: 'bold',
     letterSpacing: 1,
   },
@@ -41,14 +41,14 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 12,
-    color: Colors.BLACK,
+    color: Colours.BLACK,
     fontWeight: '600',
     marginBottom: 2,
   },
   circleAvailableAccessory: {
     fontSize: 12,
     marginRight: 6,
-    color: Colors.GREEN,
+    color: Colours.GREEN,
   },
   containerStatusAccessory: {
     flexDirection: 'row',
@@ -56,16 +56,16 @@ export const styles = StyleSheet.create({
   },
   textAvailableAccessory: {
     fontSize: 12,
-    color: Colors.GREEN,
+    color: Colours.GREEN,
   },
   circleUnvailableAccessory: {
     fontSize: 12,
     marginRight: 6,
-    color: Colors.RED,
+    color: Colours.RED,
   },
   textUnvailableAccessory: {
     fontSize: 12,
-    color: Colors.RED,
+    color: Colours.RED,
   },
   textContainer: {
     gap: 6,

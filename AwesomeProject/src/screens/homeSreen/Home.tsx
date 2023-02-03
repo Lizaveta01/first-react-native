@@ -14,7 +14,7 @@ import {IProduct} from '../../models/IProduct';
 import {productsData} from '../../constants/data';
 import ProductCard from '../../components/productCard/RroductCard';
 import {styles} from './styles';
-import {Colors} from '../../constants/colors';
+import {Colours} from '../../constants/colours';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);
@@ -40,18 +40,14 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={Colors.WHITE} barStyle="dark-content" />
+      <StatusBar backgroundColor={Colours.WHITE} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.iconContainer}>
-          <TouchableOpacity>
-            <View style={styles.buttonContainer}>
-              <Icon name="shopping-bag" style={styles.shoppingBag} />
-            </View>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Icon name="shopping-bag" style={styles.shoppingBag} />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.buttonContainer}>
-              <IconAntDesign name="shoppingcart" style={styles.shoppingBag} />
-            </View>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <IconAntDesign name="shoppingcart" style={styles.shoppingBag} />
           </TouchableOpacity>
         </View>
 

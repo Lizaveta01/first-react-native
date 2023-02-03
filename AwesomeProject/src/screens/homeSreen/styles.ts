@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../../constants/colors';
+import {Colours} from '../../constants/colours';
 
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: Colors.WHITE,
+    backgroundColor: Colours.WHITE,
   },
   iconContainer: {
     width: '100%',
@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
   },
   shoppingBag: {
     fontSize: 18,
-    color: Colors.BACKGROUND_MEDIUM,
+    color: Colours.BACKGROUND_MEDIUM,
     padding: 12,
   },
   buttonContainer: {
-    backgroundColor: Colors.BACKGROUND_LIGHT,
+    backgroundColor: Colours.BACKGROUND_LIGHT,
     borderRadius: 10,
   },
   textContainer: {
@@ -28,14 +28,14 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: 26,
-    color: Colors.BLACK,
+    color: Colours.BLACK,
     fontWeight: '500',
     letterSpacing: 1,
     marginBottom: 10,
   },
   description: {
     fontSize: 14,
-    color: Colors.BLACK,
+    color: Colours.BLACK,
     fontWeight: '400',
     letterSpacing: 1,
     marginBottom: 10,
@@ -55,20 +55,20 @@ export const styles = StyleSheet.create({
   },
   textStyle1: {
     fontSize: 18,
-    color: Colors.BLACK,
+    color: Colours.BLACK,
     fontWeight: '500',
     letterSpacing: 1,
   },
   textStyle2: {
     fontSize: 14,
-    color: Colors.BLACK,
+    color: Colours.BLACK,
     fontWeight: '400',
     opacity: 0.5,
     marginLeft: 10,
   },
   textStyle3: {
     fontSize: 14,
-    color: Colors.BLUE,
+    color: Colours.BLUE,
     fontWeight: '400',
   },
   productsContainer: {

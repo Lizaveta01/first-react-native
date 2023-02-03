@@ -3,6 +3,8 @@ import {IProduct} from '../../models/IProduct';
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {styles} from './styles';
+import {useNavigation} from '@react-navigation/native';
+import {productScreenProp} from '../../models/Navigation';
 
 type props = {
   data: IProduct;
@@ -10,8 +12,12 @@ type props = {
 };
 
 const ProductCard = ({data}: props) => {
+  const navigation = useNavigation<productScreenProp>();
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}>
       <View style={styles.productContainer}>
         {data.isOff ? (
           <View style={styles.productAvailable}>
