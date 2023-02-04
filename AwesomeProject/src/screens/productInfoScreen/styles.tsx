@@ -1,7 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { StyleSheet} from 'react-native';
 import {Colours} from '../../constants/colours';
-
-const width = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   container: {
@@ -144,7 +142,7 @@ export const styles = StyleSheet.create({
   },
   container11: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 20,
     height: '8%',
     width: '100%',
     justifyContent: 'center',
@@ -166,7 +164,6 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   productContainer: {
-    width: width,
     height: 240,
     alignItems: 'center',
     justifyContent: 'center',

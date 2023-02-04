@@ -3,15 +3,12 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
-  StatusBar,
   Animated,
   ScrollView,
   TouchableOpacity,
   FlatList,
   Image,
-  Dimensions,
-  Button,
+  useWindowDimensions,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {Colours} from '../../constants/colours';
@@ -24,24 +21,26 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 import {CustomStatusBar} from '../../components/customStatusBar/CustomStatusBar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {addItemToStorage} from '../../utils/addItemToStorage';
+
+type product = {
+  item: string;
+};
 
 const ProductInfo = () => {
   const navigation = useNavigation<productScreenProp>();
   const route = useRoute<ProductInfoScreenRouteProp>();
   const {productID} = route.params;
   const [product, setProduct] = useState<IProduct | null>(null);
-
-  const width = Dimensions.get('window').width;
-
+  const {width} = useWindowDimensions();
   const scrollX = new Animated.Value(0);
-
   let position = Animated.divide(scrollX, width);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       getDataFromDB();
     });
-
     return unsubscribe;
   }, [navigation]);
 
@@ -50,14 +49,25 @@ const ProductInfo = () => {
     setProduct(targetProduct[0]);
   };
 
-  //product horizontal scroll product card
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const renderProduct = ({item, index}: any) => {
+  const renderProduct = ({item}: product) => {
     return (
-      <View style={styles.productContainer}>
-        <Image source={item} style={styles.productImage} />
+      <View style={[styles.productContainer, {width: width}]}>
+        <Image source={JSON.parse(item)} style={styles.productImage} />
       </View>
     );
+  };
+
+  const addToCart = async () => {
+    let storageCartItem: string = await AsyncStorage.getItem('cartItem');
+    let cartItem: number[] | null = JSON.parse(storageCartItem);
+    if (cartItem) {
+      cartItem.push(productID);
+      addItemToStorage(cartItem);
+    } else {
+      let cart: number[] = [];
+      cart.push(productID);
+      addItemToStorage(cart);
+    }
   };
 
   return (
@@ -81,9 +91,8 @@ const ProductInfo = () => {
             horizontal
             renderItem={renderProduct}
             showsHorizontalScrollIndicator={false}
-            decelerationRate={0.8}
+            decelerationRate={0.6}
             snapToInterval={width}
-            bounces={false}
             onScroll={Animated.event(
               [{nativeEvent: {contentOffset: {x: scrollX}}}],
               {useNativeDriver: false},
@@ -93,7 +102,7 @@ const ProductInfo = () => {
           <View style={styles.container3}>
             {product?.productImageList
               ? product.productImageList.map((data, index) => {
-                  let opacity = position.interpolate({
+                  const opacity = position.interpolate({
                     inputRange: [index - 1, index, index + 1],
                     outputRange: [0.2, 1, 0.2],
                     extrapolate: 'clamp',
@@ -101,15 +110,12 @@ const ProductInfo = () => {
                   return (
                     <Animated.View
                       key={index}
-                      // eslint-disable-next-line react-native/no-inline-styles
-                      style={{
-                        width: '16%',
-                        height: 2.4,
-                        backgroundColor: Colours.BLACK,
-                        marginHorizontal: 4,
-                        borderRadius: 100,
-                        opacity,
-                      }}
+                      style={[
+                        styles.animatedContainer,
+                        {
+                          opacity: opacity,
+                        },
+                      ]}
                     />
                   );
                 })
@@ -131,27 +137,26 @@ const ProductInfo = () => {
               <View style={styles.container9}>
                 <Entypo name="location-pin" style={styles.locationPin} />
               </View>
-              <Text> Rustaveli Ave 57,{'\n'}17-001, Batume</Text>
+              <Text> Nemiga 57-15,{'\n'} Minsk</Text>
             </View>
             <Entypo name="chevron-right" style={styles.chevronRight} />
           </View>
           <View style={styles.container10}>
-            <Text style={styles.text4}>&#8377; {product?.productPrice}.00</Text>
+            <Text style={styles.text4}>$ {product?.productPrice}.00</Text>
             <Text>
               Tax Rate 2%~ ${product?.productPrice! / 20} ($
               {product?.productPrice! + product?.productPrice! / 20})
             </Text>
           </View>
         </View>
-
-        <View style={styles.container11}>
-          <TouchableOpacity style={styles.container12}>
-            <Text style={styles.text5}>
-              {product?.isAvailable ? 'Add to cart' : 'Not Avialable'}
-            </Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
+      <View style={styles.container11}>
+        <TouchableOpacity style={styles.container12} onPress={addToCart}>
+          <Text style={styles.text5}>
+            {product?.isAvailable ? 'Add to cart' : 'Not Avialable'}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
