@@ -6,6 +6,7 @@ export type productScreenProp = StackNavigationProp<RootStackParamList>;
 export type RootStackParamList = {
   Home: undefined;
   ProductInfo: {productID: number};
+  Cart: undefined;
 };
 
 export type ProductInfoScreenRouteProp = RouteProp<

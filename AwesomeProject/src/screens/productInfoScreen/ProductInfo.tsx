@@ -11,7 +11,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {Colours} from '../../constants/colours';
+import {Colors} from '../../constants/colors';
 import {productsData} from '../../constants/data';
 import {IProduct} from '../../models/IProduct';
 import {
@@ -58,8 +58,8 @@ const ProductInfo = () => {
   };
 
   const addToCart = async () => {
-    let storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    let cartItem: number[] | null = JSON.parse(storageCartItem);
+    const storageCartItem: string = await AsyncStorage.getItem('cartItem');
+    const cartItem: number[] | null = JSON.parse(storageCartItem);
     if (cartItem) {
       cartItem.push(productID);
       addItemToStorage(cartItem);
@@ -73,7 +73,7 @@ const ProductInfo = () => {
   return (
     <View style={styles.container}>
       <CustomStatusBar
-        backgroundColor={Colours.BACKGROUND_LIGHT}
+        backgroundColor={Colors.BACKGROUND_LIGHT}
         barStyle="dark-content"
       />
       <ScrollView>

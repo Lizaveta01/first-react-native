@@ -1,16 +1,16 @@
 import { StyleSheet} from 'react-native';
-import {Colours} from '../../constants/colours';
+import {Colors} from '../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: Colours.WHITE,
+    backgroundColor: Colors.WHITE,
     position: 'relative',
   },
   container1: {
     width: '100%',
-    backgroundColor: Colours.BACKGROUND_LIGHT,
+    backgroundColor: Colors.BACKGROUND_LIGHT,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     position: 'relative',
@@ -26,12 +26,12 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   buttonContainer: {
-    backgroundColor: Colours.WHITE,
+    backgroundColor: Colors.WHITE,
     borderRadius: 10,
   },
   chevronLeft: {
     fontSize: 18,
-    color: Colours.BACKGROUND_DARK,
+    color: Colors.BACKGROUND_DARK,
     padding: 12,
   },
   container3: {
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
   animatedContainer: {
     width: '16%',
     height: 2.4,
-    backgroundColor: Colours.BLACK,
+    backgroundColor: Colors.BLACK,
     marginHorizontal: 4,
     borderRadius: 100,
   },
@@ -60,12 +60,12 @@ export const styles = StyleSheet.create({
   },
   shoppingCart: {
     fontSize: 18,
-    color: Colours.BLUE,
+    color: Colors.BLUE,
     marginRight: 6,
   },
   text1: {
     fontSize: 12,
-    color: Colours.BLUE,
+    color: Colors.BLUE,
   },
   container6: {
     flexDirection: 'row',
@@ -78,19 +78,19 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: 0.5,
     marginVertical: 4,
-    color: Colours.BLACK,
+    color: Colors.BLACK,
     maxWidth: '84%',
   },
   linkOutline: {
     fontSize: 24,
-    color: Colours.BLUE,
-    backgroundColor: Colours.BLUE + 10,
+    color: Colors.BLUE,
+    backgroundColor: Colors.BLUE + 10,
     padding: 8,
     borderRadius: 100,
   },
   text3: {
     fontSize: 12,
-    color: Colours.BLACK,
+    color: Colors.BLACK,
     fontWeight: '400',
     letterSpacing: 1,
     opacity: 0.5,
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginVertical: 14,
-    borderBottomColor: Colours.BACKGROUND_LIGHT,
+    borderBottomColor: Colors.BACKGROUND_LIGHT,
     borderBottomWidth: 1,
     paddingBottom: 20,
   },
@@ -114,8 +114,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container9: {
-    color: Colours.BLUE,
-    backgroundColor: Colours.BACKGROUND_LIGHT,
+    color: Colors.BLUE,
+    backgroundColor: Colors.BACKGROUND_LIGHT,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
@@ -124,11 +124,11 @@ export const styles = StyleSheet.create({
   },
   locationPin: {
     fontSize: 16,
-    color: Colours.BLUE,
+    color: Colors.BLUE,
   },
   chevronRight: {
     fontSize: 22,
-    color: Colours.BACKGROUND_DARK,
+    color: Colors.BACKGROUND_DARK,
   },
   container10: {
     paddingHorizontal: 16,
@@ -137,7 +137,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     maxWidth: '85%',
-    color: Colours.BLACK,
+    color: Colors.BLACK,
     marginBottom: 4,
   },
   container11: {
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
   container12: {
     width: '86%',
     height: '90%',
-    backgroundColor: Colours.BLUE,
+    backgroundColor: Colors.BLUE,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -160,7 +160,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     letterSpacing: 1,
-    color: Colours.WHITE,
+    color: Colors.WHITE,
     textTransform: 'uppercase',
   },
   productContainer: {

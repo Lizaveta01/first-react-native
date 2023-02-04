@@ -14,11 +14,15 @@ import {IProduct} from '../../models/IProduct';
 import {productsData} from '../../constants/data';
 import ProductCard from '../../components/productCard/RroductCard';
 import {styles} from './styles';
-import {Colours} from '../../constants/colours';
+import {Colors} from '../../constants/colors';
+import {useNavigation} from '@react-navigation/native';
+import {productScreenProp} from '../../models/Navigation';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);
   const [accessory, setAccessory] = useState<IProduct[] | []>([]);
+
+  const navigation = useNavigation<productScreenProp>();
 
   useEffect(() => {
     getDataFromDB(productsData);
@@ -40,13 +44,15 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={Colours.WHITE} barStyle="dark-content" />
+      <StatusBar backgroundColor={Colors.WHITE} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.buttonContainer}>
             <Icon name="shopping-bag" style={styles.shoppingBag} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => navigation.navigate('Cart')}>
             <IconAntDesign name="shoppingcart" style={styles.shoppingBag} />
           </TouchableOpacity>
         </View>
