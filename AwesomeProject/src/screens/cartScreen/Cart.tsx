@@ -47,7 +47,7 @@ const Cart = () => {
         }
       });
       setProduct(productData);
-      getTotal(product);
+      getTotal(productData);
     }
   };
 

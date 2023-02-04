@@ -1,6 +1,6 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IProduct} from '../../models/IProduct';
-import React from 'react';
+import React, {useState} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {productScreenProp} from '../../models/Navigation';
@@ -15,6 +15,7 @@ type props = {
 
 const ProductInCard = ({product, isUpdate}: props) => {
   const navigation = useNavigation<productScreenProp>();
+  const [counter, setCounter] = useState(1);
 
   const removeItemFromCart = async (id: number) => {
     const storageCartItem: string = await AsyncStorage.getItem('cartItem');
@@ -30,16 +31,24 @@ const ProductInCard = ({product, isUpdate}: props) => {
       }
     }
   };
+  const decreaseCounter = () => {
+    if (counter) {
+      setCounter(counter => counter - 1);
+    }
+  };
+  const increaseCounter = () => {
+    setCounter(counter => counter + 1);
+  };
 
   return (
-    <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('ProductInfo', {productID: product.id})
-      }
-      style={styles.container}>
-      <View style={styles.container1}>
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.container1}
+        onPress={() =>
+          navigation.navigate('ProductInfo', {productID: product.id})
+        }>
         <Image source={JSON.parse(product.productImage)} style={styles.image} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.container2}>
         <View>
           <Text style={styles.text1}>{product.productName}</Text>
@@ -50,13 +59,19 @@ const ProductInCard = ({product, isUpdate}: props) => {
         </View>
         <View style={styles.container4}>
           <View style={styles.container5}>
-            <View style={styles.container6}>
+            <TouchableOpacity
+              style={styles.container6}
+              onPress={decreaseCounter}>
               <MaterialCommunityIcons name="minus" style={styles.icon} />
-            </View>
-            <Text>1</Text>
-            <View style={styles.container7}>
-              <MaterialCommunityIcons name="plus" style={styles.icon} />
-            </View>
+            </TouchableOpacity>
+            <Text>{counter}</Text>
+            <TouchableOpacity style={styles.container7}>
+              <MaterialCommunityIcons
+                name="plus"
+                style={styles.icon}
+                onPress={increaseCounter}
+              />
+            </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => removeItemFromCart(product.id)}>
             <MaterialCommunityIcons
@@ -66,7 +81,7 @@ const ProductInCard = ({product, isUpdate}: props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
