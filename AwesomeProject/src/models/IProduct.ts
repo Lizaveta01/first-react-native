@@ -9,4 +9,5 @@ export interface IProduct {
   productImage: string;
   isAvailable: boolean;
   productImageList: string[];
+  counter?: number;
 }

@@ -1,11 +1,16 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IProduct} from '../../models/IProduct';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {productScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {CartStorage} from '../../models/CartStorage';
+import {
+  deleteItemFromStorage,
+  updateItemInStorage,
+} from '../../utils/deleteItemFromStorage';
 
 type props = {
   product: IProduct;
@@ -15,30 +20,44 @@ type props = {
 
 const ProductInCard = ({product, isUpdate}: props) => {
   const navigation = useNavigation<productScreenProp>();
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(0);
 
-  const removeItemFromCart = async (id: number) => {
+  useEffect(() => {
+    getStorageItem().then(counter => setCounter(counter));
+  }, []);
+
+  const getStorageItem = async (): Promise<number> => {
     const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: number[] | null = JSON.parse(storageCartItem);
-    if (cartItem) {
-      for (let index = 0; index < cartItem.length; index++) {
-        if (cartItem[index] === id) {
-          cartItem.splice(index, 1);
-        }
+    const cartItem: CartStorage = JSON.parse(storageCartItem);
 
-        await AsyncStorage.setItem('cartItem', JSON.stringify(cartItem));
-        isUpdate(true);
-      }
-    }
+    return cartItem[product.id];
   };
+
+  const removeItemFromCart = (id: number) => {
+    deleteItemFromStorage(id).then(() => isUpdate(true));
+  };
+
   const decreaseCounter = () => {
-    if (counter) {
-      setCounter(counter => counter - 1);
+    let newCounter = 0;
+    if (counter < 1) {
+      setCounter(newCounter);
+    } else {
+      newCounter = counter - 1;
+      setCounter(newCounter);
     }
+    updateItemInStorage(product.id, newCounter).then(() => isUpdate(true));
   };
+
   const increaseCounter = () => {
-    setCounter(counter => counter + 1);
+    let newCounter = counter + 1;
+    setCounter(newCounter);
+    updateItemInStorage(product.id, newCounter).then(() => isUpdate(true));
   };
+
+  // useEffect(() => {
+  //   console.log('counter', counter);
+  //   updateItemInStorage(product.id, counter).then(() => isUpdate(true));
+  // }, [counter]);
 
   return (
     <View style={styles.container}>

@@ -58,16 +58,7 @@ const ProductInfo = () => {
   };
 
   const addToCart = async () => {
-    const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: number[] | null = JSON.parse(storageCartItem);
-    if (cartItem) {
-      cartItem.push(productID);
-      addItemToStorage(cartItem);
-    } else {
-      let cart: number[] = [];
-      cart.push(productID);
-      addItemToStorage(cart);
-    }
+    addItemToStorage(productID);
   };
 
   return (

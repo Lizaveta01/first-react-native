@@ -15,6 +15,7 @@ import {productsData} from '../../constants/data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IProduct} from '../../models/IProduct';
 import ProductInCard from '../../components/productInCart/RroductInCart';
+import {CartStorage} from '../../models/CartStorage';
 
 const Cart = () => {
   const navigation = useNavigation<productScreenProp>();
@@ -23,38 +24,40 @@ const Cart = () => {
   const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      getDataFromDB();
-    });
-
-    return unsubscribe;
-  }, [navigation]);
+    getDataFromDB();
+  }, []);
 
   useEffect(() => {
-    setIsUpdate(false);
+    console.log('update', isUpdate);
     getDataFromDB();
+    setIsUpdate(false);
   }, [isUpdate]);
+
+  useEffect(() => {
+    // console.log('product', product);
+    getTotal(product);
+  }, [product]);
 
   const getDataFromDB = async () => {
     const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: number[] | null = JSON.parse(storageCartItem);
+    const cartItem: CartStorage = JSON.parse(storageCartItem);
     const productData: IProduct[] = [];
-    console.log('items', cartItem);
+    console.log('cartItem-cart', cartItem);
     if (cartItem) {
       productsData.forEach(product => {
-        if (cartItem.includes(product.id)) {
+        if (cartItem.hasOwnProperty(product.id)) {
+          product.counter = cartItem[product.id];
           productData.push(product);
         }
       });
       setProduct(productData);
-      getTotal(productData);
     }
   };
 
   const getTotal = (productData: IProduct[]) => {
     let totalValue = productData.reduce(
       (totalSum: number, products: IProduct) => {
-        const sum = totalSum + products.productPrice;
+        const sum = totalSum + products.productPrice * products.counter!;
         return sum;
       },
       0,
