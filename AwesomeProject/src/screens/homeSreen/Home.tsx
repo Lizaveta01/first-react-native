@@ -17,7 +17,6 @@ import {styles} from './styles';
 import {Colors} from '../../constants/colors';
 import {useNavigation} from '@react-navigation/native';
 import {productScreenProp} from '../../models/Navigation';
-import { CartStorage } from '../../models/CartStorage';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);
@@ -41,9 +40,6 @@ const Home = () => {
     }
     setProducts(productsList);
     setAccessory(accessoryList);
-    const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: CartStorage = JSON.parse(storageCartItem);
-    console.log('home', cartItem);
   };
 
   return (
