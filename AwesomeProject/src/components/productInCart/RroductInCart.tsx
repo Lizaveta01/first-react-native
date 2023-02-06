@@ -1,6 +1,6 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IProduct} from '../../models/IProduct';
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {productScreenProp} from '../../models/Navigation';
@@ -21,18 +21,16 @@ type props = {
 const ProductInCard = React.memo(({product, isUpdate}: props) => {
   const navigation = useNavigation<productScreenProp>();
   const [counter, setCounter] = useState(0);
-  console.log('update product');
+  console.log('update product', product.counter);
+
+  const getCounter = useCallback(
+    () => setCounter(product.counter!),
+    [product.counter],
+  );
 
   useEffect(() => {
-    getStorageItem().then(counter => setCounter(counter));
+    getCounter();
   }, []);
-
-  const getStorageItem = async (): Promise<number> => {
-    const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: CartStorage = JSON.parse(storageCartItem);
-
-    return cartItem[product.id];
-  };
 
   const removeItemFromCart = (id: number) => {
     deleteItemFromStorage(id).then(() => isUpdate(true));
@@ -41,6 +39,7 @@ const ProductInCard = React.memo(({product, isUpdate}: props) => {
   const decreaseCounter = () => {
     let newCounter = 0;
     if (counter < 1) {
+      newCounter = 0;
       setCounter(newCounter);
     } else {
       newCounter = counter - 1;
