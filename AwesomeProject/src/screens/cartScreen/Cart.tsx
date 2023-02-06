@@ -17,26 +17,21 @@ import {IProduct} from '../../models/IProduct';
 import ProductInCard from '../../components/productInCart/RroductInCart';
 import {CartStorage} from '../../models/CartStorage';
 import BackToPage from '../../components/buttons/BackToPage';
+import {updateStorage} from '../../utils/updateStorage';
 
 const Cart = () => {
   const navigation = useNavigation<productScreenProp>();
-  const [product, setProduct] = useState<IProduct[] | []>([]);
+  const [products, setProducts] = useState<IProduct[] | []>([]);
   const [total, setTotal] = useState(0);
-  const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
     getDataFromDB();
   }, []);
 
   useEffect(() => {
-    console.log('update', isUpdate);
-    getDataFromDB();
-    setIsUpdate(false);
-  }, [isUpdate]);
-
-  useEffect(() => {
-    getTotal(product);
-  }, [product]);
+    getTotal(products);
+    updateStorage(products);
+  }, [products]);
 
   const getDataFromDB = async () => {
     const storageCartItem: string = await AsyncStorage.getItem('cartItem');
@@ -50,16 +45,39 @@ const Cart = () => {
           productData.push(product);
         }
       });
-      setProduct(productData);
+      setProducts(productData);
     }
+  };
+
+  const handleRemoveItem = (id: number) => {
+    setProducts(products.filter(item => item.id !== id));
+  };
+
+  const handleIncreaseItem = (id: number) => {
+    const newProductsList = products.map(item => {
+      if (item.id === id) {
+        item.counter! += 1;
+      }
+      return item;
+    });
+    setProducts(newProductsList);
+  };
+
+  const handleDecreaseItem = (id: number) => {
+    setProducts(
+      products.map(item => {
+        if (item.id === id) {
+          item.counter! < 1 ? item.counter === 0 : item.counter!--;
+        }
+        return item;
+      }),
+    );
   };
 
   const getTotal = (productData: IProduct[]) => {
     let totalValue = productData.reduce(
-      (totalSum: number, products: IProduct) => {
-        const sum = totalSum + products.productPrice * products.counter!;
-        return sum;
-      },
+      (totalSum: number, products: IProduct) =>
+        totalSum + products.productPrice * products.counter!,
       0,
     );
     setTotal(totalValue);
@@ -85,12 +103,14 @@ const Cart = () => {
         </View>
         <Text style={styles.text2}>My Cart</Text>
         <View style={styles.container2}>
-          {product
-            ? product.map(item => (
+          {products
+            ? products.map(item => (
                 <ProductInCard
                   product={item}
                   key={item.id}
-                  isUpdate={value => setIsUpdate(value)}
+                  removeItem={handleRemoveItem}
+                  increaseItem={handleIncreaseItem}
+                  decreaseItem={handleDecreaseItem}
                 />
               ))
             : null}

@@ -1,6 +1,7 @@
 import {ToastAndroid} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {CartStorage} from '../models/CartStorage';
+import { IProduct } from '../models/IProduct';
 
 export const addItemToStorage = async (productID: number) => {
   const storageCartItem: string = await AsyncStorage.getItem('cartItem');
@@ -22,3 +23,5 @@ export const addItemToStorage = async (productID: number) => {
     return error;
   }
 };
+
+

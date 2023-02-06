@@ -15,14 +15,3 @@ export const deleteItemFromStorage = async (productID: number) => {
     return error;
   }
 };
-
-export const updateItemInStorage = async (
-  productID: number,
-  counter: number,
-) => {
-  const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-  let cartItem: CartStorage = JSON.parse(storageCartItem);
-
-  cartItem[productID] = counter;
-  await AsyncStorage.setItem('cartItem', JSON.stringify(cartItem));
-};
