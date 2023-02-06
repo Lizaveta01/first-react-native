@@ -57,10 +57,10 @@ export const styles = StyleSheet.create({
   container5: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 20,
   },
-  container6: {
+  iconCircle: {
     borderRadius: 100,
-    marginRight: 20,
     padding: 4,
     borderWidth: 1,
     borderColor: Colors.BACKGROUND_MEDIUM,
@@ -69,14 +69,6 @@ export const styles = StyleSheet.create({
   icon: {
     fontSize: 16,
     color: Colors.BACKGROUND_DARK,
-  },
-  container7: {
-    borderRadius: 100,
-    marginLeft: 20,
-    padding: 4,
-    borderWidth: 1,
-    borderColor: Colors.BACKGROUND_MEDIUM,
-    opacity: 0.5,
   },
   deleteIcon: {
     fontSize: 16,

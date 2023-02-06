@@ -92,10 +92,6 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     color: Colors.BACKGROUND_DARK,
   },
-  container7: {
-    paddingHorizontal: 16,
-    marginVertical: 10,
-  },
   text6: {
     fontSize: 16,
     color: Colors.BLACK,
@@ -138,11 +134,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 22,
-  },
-  container14: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
   container15: {
     position: 'absolute',
@@ -199,31 +190,11 @@ export const styles = StyleSheet.create({
     opacity: 0.8,
   },
   text13: {
-    fontSize: 12,
-    fontWeight: '400',
-    maxWidth: '80%',
-    color: Colors.BLACK,
-    opacity: 0.5,
-  },
-  text14: {
-    fontSize: 12,
-    fontWeight: '400',
-    color: Colors.BLACK,
-    opacity: 0.8,
-  },
-  text15: {
-    fontSize: 12,
-    fontWeight: '400',
-    maxWidth: '80%',
-    color: Colors.BLACK,
-    opacity: 0.5,
-  },
-  text16: {
     fontSize: 18,
     fontWeight: '500',
     color: Colors.BLACK,
   },
-  text17: {
+  text14: {
     fontSize: 12,
     fontWeight: '500',
     letterSpacing: 1,

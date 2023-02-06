@@ -16,6 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IProduct} from '../../models/IProduct';
 import ProductInCard from '../../components/productInCart/RroductInCart';
 import {CartStorage} from '../../models/CartStorage';
+import BackToPage from '../../components/buttons/BackToPage';
 
 const Cart = () => {
   const navigation = useNavigation<productScreenProp>();
@@ -34,7 +35,6 @@ const Cart = () => {
   }, [isUpdate]);
 
   useEffect(() => {
-    // console.log('product', product);
     getTotal(product);
   }, [product]);
 
@@ -80,14 +80,7 @@ const Cart = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.container1}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.buttonContainer}>
-            <MaterialCommunityIcons
-              name="chevron-left"
-              style={styles.chevronLeft}
-            />
-          </TouchableOpacity>
+          <BackToPage navigation={navigation} />
           <Text style={styles.text1}>Order Details</Text>
         </View>
         <Text style={styles.text2}>My Cart</Text>
@@ -124,7 +117,7 @@ const Cart = () => {
               />
             </View>
           </View>
-          <View style={styles.container7}>
+          <View style={styles.container3}>
             <Text style={styles.text6}>Payment Method</Text>
             <View style={styles.container8}>
               <View style={styles.container9}>
@@ -149,12 +142,12 @@ const Cart = () => {
               <Text style={styles.text12}>${total}.00</Text>
             </View>
             <View style={styles.container13}>
-              <Text style={styles.text13}>Shipping Tax</Text>
-              <Text style={styles.text14}>${total / 20}</Text>
+              <Text style={styles.text11}>Shipping Tax</Text>
+              <Text style={styles.text12}>${total / 20}</Text>
             </View>
-            <View style={styles.container14}>
-              <Text style={styles.text15}>Total</Text>
-              <Text style={styles.text16}>${total + total / 20}</Text>
+            <View style={styles.container4}>
+              <Text style={styles.text11}>Total</Text>
+              <Text style={styles.text13}>${total + total / 20}</Text>
             </View>
           </View>
         </View>
@@ -164,7 +157,7 @@ const Cart = () => {
         <TouchableOpacity
           onPress={() => (total !== 0 ? checkOut() : null)}
           style={styles.container16}>
-          <Text style={styles.text17}>CHECKOUT (${total + total / 20} )</Text>
+          <Text style={styles.text14}>CHECKOUT (${total + total / 20} )</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -18,9 +18,10 @@ type props = {
   isUpdate: (value: boolean) => void;
 };
 
-const ProductInCard = ({product, isUpdate}: props) => {
+const ProductInCard = React.memo(({product, isUpdate}: props) => {
   const navigation = useNavigation<productScreenProp>();
   const [counter, setCounter] = useState(0);
+  console.log('update product');
 
   useEffect(() => {
     getStorageItem().then(counter => setCounter(counter));
@@ -54,11 +55,6 @@ const ProductInCard = ({product, isUpdate}: props) => {
     updateItemInStorage(product.id, newCounter).then(() => isUpdate(true));
   };
 
-  // useEffect(() => {
-  //   console.log('counter', counter);
-  //   updateItemInStorage(product.id, counter).then(() => isUpdate(true));
-  // }, [counter]);
-
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -79,17 +75,15 @@ const ProductInCard = ({product, isUpdate}: props) => {
         <View style={styles.container4}>
           <View style={styles.container5}>
             <TouchableOpacity
-              style={styles.container6}
+              style={styles.iconCircle}
               onPress={decreaseCounter}>
               <MaterialCommunityIcons name="minus" style={styles.icon} />
             </TouchableOpacity>
             <Text>{counter}</Text>
-            <TouchableOpacity style={styles.container7}>
-              <MaterialCommunityIcons
-                name="plus"
-                style={styles.icon}
-                onPress={increaseCounter}
-              />
+            <TouchableOpacity
+              style={styles.iconCircle}
+              onPress={increaseCounter}>
+              <MaterialCommunityIcons name="plus" style={styles.icon} />
             </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => removeItemFromCart(product.id)}>
@@ -102,6 +96,6 @@ const ProductInCard = ({product, isUpdate}: props) => {
       </View>
     </View>
   );
-};
+});
 
 export default ProductInCard;

@@ -21,8 +21,8 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 import {CustomStatusBar} from '../../components/customStatusBar/CustomStatusBar';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {addItemToStorage} from '../../utils/addItemToStorage';
+import BackToPage from '../../components/buttons/BackToPage';
 
 type product = {
   item: string;
@@ -57,8 +57,8 @@ const ProductInfo = () => {
     );
   };
 
-  const addToCart = async () => {
-    addItemToStorage(productID);
+  const addToCart = () => {
+    product?.isAvailable ? addItemToStorage(productID) : null;
   };
 
   return (
@@ -70,11 +70,7 @@ const ProductInfo = () => {
       <ScrollView>
         <View style={styles.container1}>
           <View style={styles.container2}>
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              style={styles.buttonContainer}>
-              <Entypo name="chevron-left" style={styles.chevronLeft} />
-            </TouchableOpacity>
+            <BackToPage navigation={navigation} />
           </View>
 
           <FlatList
