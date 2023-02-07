@@ -5,12 +5,12 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {IProduct} from '../../models/IProduct';
-import ProductInCard from '../../components/ProductInCart/ProductInCart';
-import BackToPage from '../../components/buttons/BackToPage';
-import * as ProductService from '../../utils/productService';
-import {StorageItems} from '../../constants/storageItems';
-import {ProductScreenProp} from '../ProductInfoScreen/ProductInfo';
+import {IProduct} from '@/models/IProduct';
+import ProductInCard from '@/components/ProductInCart/ProductInCart';
+import BackToPage from '@/components/buttons/BackToPage';
+import * as ProductService from '@/utils/productService';
+import {StorageItems} from '@/constants/storageItems';
+import {ProductScreenProp} from '@screens/ProductInfoScreen/ProductInfo';
 
 const {CART_ITEMS} = StorageItems;
 

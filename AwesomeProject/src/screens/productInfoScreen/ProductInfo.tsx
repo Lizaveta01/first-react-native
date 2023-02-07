@@ -10,15 +10,15 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {Colors} from '../../constants/colors';
-import {productsData} from '../../constants/data';
-import {IProduct} from '../../models/IProduct';
+import {Colors} from '@/constants/colors';
+import {productsData} from '@/constants/data';
+import {IProduct} from '@/models/IProduct';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
-import {CustomStatusBar} from '../../components/CustomStatusBar/CustomStatusBar';
-import BackToPage from '../../components/buttons/BackToPage';
-import * as ProductService from '../../utils/productService';
-import {RootStackParamList} from 'src/App';
+import {CustomStatusBar} from '@/components/CustomStatusBar/CustomStatusBar';
+import BackToPage from '@/components/buttons/BackToPage';
+import * as ProductService from '@/utils/productService';
+import {RootStackParamList} from '@/App';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type ProductInfoScreenRouteProp = RouteProp<RootStackParamList, 'ProductInfo'>;

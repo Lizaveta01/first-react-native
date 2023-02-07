@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {CartStorage} from '../models/CartStorage';
-import {IProduct} from '../models/IProduct';
-import {productsData} from '../constants/data';
-import {StorageItems} from '../constants/storageItems';
+import {CartStorage} from '@/models/CartStorage';
+import {IProduct} from '@/models/IProduct';
+import {productsData} from '@/constants/data';
+import {StorageItems} from '@/constants/storageItems';
 
 const {CART_ITEMS} = StorageItems;
 

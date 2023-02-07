@@ -10,13 +10,13 @@ import {
 import Icon from 'react-native-vector-icons/Entypo';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {IProduct} from '../../models/IProduct';
-import {productsData} from '../../constants/data';
+import {IProduct} from '@/models/IProduct';
+import {productsData} from '@/constants/data';
 import {styles} from './styles';
-import {Colors} from '../../constants/colors';
+import {Colors} from '@/constants/colors';
 import {useNavigation} from '@react-navigation/native';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import {ProductScreenProp} from '../ProductInfoScreen/ProductInfo';
+import ProductCard from '@/components/ProductCard/ProductCard';
+import {ProductScreenProp} from '@/screens/ProductInfoScreen/ProductInfo';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);

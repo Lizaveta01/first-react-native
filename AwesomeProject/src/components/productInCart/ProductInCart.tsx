@@ -1,5 +1,5 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {IProduct} from '../../models/IProduct';
+import {IProduct} from '@/models/IProduct';
 import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';

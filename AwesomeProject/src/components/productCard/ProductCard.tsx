@@ -1,10 +1,10 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {IProduct} from '../../models/IProduct';
+import {IProduct} from '@models/IProduct';
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
-import {ProductScreenProp} from 'src/screens/ProductInfoScreen/ProductInfo';
+import {ProductScreenProp} from '@screens/ProductInfoScreen/ProductInfo';
 
 type Props = {
   data: IProduct;

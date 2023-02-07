@@ -1,8 +1,7 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Colors} from '../../constants/colors';
-import {ProductScreenProp} from '../../models/Navigation';
+import {Colors} from '@/constants/colors';
 
 type Props = {
   handler: () => void;
