@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     position: 'relative',
   },
-  container1: {
+  topLineContainer: {
     width: '100%',
     flexDirection: 'row',
     paddingTop: 16,
@@ -25,12 +25,12 @@ export const styles = StyleSheet.create({
     color: Colors.BACKGROUND_DARK,
     padding: 12,
   },
-  text1: {
+  sreenName: {
     fontSize: 14,
     color: Colors.BLACK,
     fontWeight: '400',
   },
-  text2: {
+  cartTitle: {
     fontSize: 20,
     color: Colors.BLACK,
     fontWeight: '500',
@@ -39,31 +39,31 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
     marginBottom: 10,
   },
-  container2: {
+  productsContainer: {
     paddingHorizontal: 16,
   },
-  container3: {
+  orderOptionsContainer: {
     paddingHorizontal: 16,
     marginVertical: 10,
   },
-  text3: {
+  optionTitle: {
     fontSize: 16,
     color: Colors.BLACK,
     fontWeight: '500',
     letterSpacing: 1,
     marginBottom: 20,
   },
-  container4: {
+  orderOptionsContainerInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  container5: {
+  infoOptionWrapper: {
     flexDirection: 'row',
     width: '80%',
     alignItems: 'center',
   },
-  container6: {
+  buttonWrapper: {
     color: Colors.BLUE,
     backgroundColor: Colors.BACKGROUND_LIGHT,
     alignItems: 'center',
@@ -76,12 +76,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.BLUE,
   },
-  text4: {
-    fontSize: 14,
-    color: Colors.BLACK,
-    fontWeight: '500',
-  },
-  text5: {
+  oprtionDescription: {
     fontSize: 12,
     color: Colors.BLACK,
     fontWeight: '400',
@@ -92,50 +87,24 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     color: Colors.BACKGROUND_DARK,
   },
-  text6: {
-    fontSize: 16,
-    color: Colors.BLACK,
-    fontWeight: '500',
-    letterSpacing: 1,
-    marginBottom: 20,
-  },
-  container8: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  container9: {
-    flexDirection: 'row',
-    width: '80%',
-    alignItems: 'center',
-  },
-  container10: {
-    color: Colors.BLUE,
-    backgroundColor: Colors.BACKGROUND_LIGHT,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 12,
-    borderRadius: 10,
-    marginRight: 18,
-  },
-  container11: {
+  orderInfoWrapper: {
     paddingHorizontal: 16,
     marginTop: 40,
     marginBottom: 80,
   },
-  container12: {
+  subtotalTaxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  container13: {
+  totalTaxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 22,
   },
-  container15: {
+  buttonPositionWrapper: {
     position: 'absolute',
     bottom: 16,
     height: '8%',
@@ -143,7 +112,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container16: {
+  wrapperButtonOrderText: {
     width: '86%',
     height: '90%',
     backgroundColor: Colors.BLUE,
@@ -151,50 +120,43 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text7: {
+  textInIcon: {
     fontSize: 10,
     fontWeight: '900',
     color: Colors.BLUE,
     letterSpacing: 1,
   },
-  text8: {
+  optionSubTitle: {
     fontSize: 14,
     color: Colors.BLACK,
     fontWeight: '500',
   },
-  text9: {
-    fontSize: 12,
-    color: Colors.BLACK,
-    fontWeight: '400',
-    lineHeight: 20,
-    opacity: 0.5,
-  },
-  text10: {
+  orderTitle: {
     fontSize: 16,
     color: Colors.BLACK,
     fontWeight: '500',
     letterSpacing: 1,
     marginBottom: 20,
   },
-  text11: {
+  totalTitle: {
     fontSize: 12,
     fontWeight: '400',
     maxWidth: '80%',
     color: Colors.BLACK,
     opacity: 0.5,
   },
-  text12: {
+  totalSubtitle: {
     fontSize: 12,
     fontWeight: '400',
     color: Colors.BLACK,
     opacity: 0.8,
   },
-  text13: {
+  mainTotalPrice: {
     fontSize: 18,
     fontWeight: '500',
     color: Colors.BLACK,
   },
-  text14: {
+  buttonOrderText: {
     fontSize: 12,
     fontWeight: '500',
     letterSpacing: 1,

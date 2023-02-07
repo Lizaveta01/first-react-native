@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     position: 'relative',
   },
-  container1: {
+  allContent: {
     width: '100%',
     backgroundColor: Colors.BACKGROUND_LIGHT,
     borderBottomRightRadius: 20,
@@ -18,23 +18,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 4,
   },
-  container2: {
+  buttonWrapper: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 16,
     paddingLeft: 16,
   },
-  buttonContainer: {
-    backgroundColor: Colors.WHITE,
-    borderRadius: 10,
-  },
   chevronLeft: {
     fontSize: 18,
     color: Colors.BACKGROUND_DARK,
     padding: 12,
   },
-  container3: {
+  sliderContainer: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
@@ -49,11 +45,11 @@ export const styles = StyleSheet.create({
     marginHorizontal: 4,
     borderRadius: 100,
   },
-  container4: {
+  infoAboutProduct: {
     paddingHorizontal: 16,
     marginTop: 6,
   },
-  container5: {
+  shoppingLabel: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertica: 14,
@@ -63,17 +59,17 @@ export const styles = StyleSheet.create({
     color: Colors.BLUE,
     marginRight: 6,
   },
-  text1: {
+  shoppingLabelText: {
     fontSize: 12,
     color: Colors.BLUE,
   },
-  container6: {
+  ProductNameWrapper: {
     flexDirection: 'row',
     marginVertical: 4,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  text2: {
+  productName: {
     fontSize: 24,
     fontWeight: '600',
     letterSpacing: 0.5,
@@ -88,7 +84,7 @@ export const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 100,
   },
-  text3: {
+  productDescription: {
     fontSize: 12,
     color: Colors.BLACK,
     fontWeight: '400',
@@ -99,7 +95,7 @@ export const styles = StyleSheet.create({
     maxHeight: 44,
     marginBottom: 18,
   },
-  container7: {
+  locationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -108,12 +104,12 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: 20,
   },
-  container8: {
+  pointLocation: {
     flexDirection: 'row',
     width: '80%',
     alignItems: 'center',
   },
-  container9: {
+  locationButtonWrapper: {
     color: Colors.BLUE,
     backgroundColor: Colors.BACKGROUND_LIGHT,
     alignItems: 'center',
@@ -130,17 +126,17 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     color: Colors.BACKGROUND_DARK,
   },
-  container10: {
+  priceContainer: {
     paddingHorizontal: 16,
   },
-  text4: {
+  textPrice: {
     fontSize: 18,
     fontWeight: '500',
     maxWidth: '85%',
     color: Colors.BLACK,
     marginBottom: 4,
   },
-  container11: {
+  wrapperButtonAddToCart: {
     position: 'absolute',
     bottom: 20,
     height: '8%',
@@ -148,7 +144,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container12: {
+  buttonAddToCart: {
     width: '86%',
     height: '90%',
     backgroundColor: Colors.BLUE,
@@ -156,7 +152,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text5: {
+  status: {
     fontSize: 12,
     fontWeight: '500',
     letterSpacing: 1,

@@ -3,8 +3,8 @@ import {IProduct} from '../../models/IProduct';
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
-import {ProductScreenProp} from '../../models/Navigation';
 import {styles} from './styles';
+import {ProductScreenProp} from 'src/screens/ProductInfoScreen/ProductInfo';
 
 type Props = {
   data: IProduct;
@@ -24,10 +24,7 @@ const ProductCard = ({data}: Props) => {
             <Text style={styles.offPercentag}>{data.offPercentage}%</Text>
           </View>
         ) : null}
-        <Image
-          source={JSON.parse(data.productImage)}
-          style={styles.productImage}
-        />
+        <Image source={+data.productImage} style={styles.productImage} />
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{data.productName}</Text>

@@ -52,7 +52,7 @@ const ProductInfo = () => {
   const renderProduct = ({item}: Product) => {
     return (
       <View style={[styles.productContainer, {width: width}]}>
-        <Image source={JSON.parse(item)} style={styles.productImage} />
+        <Image source={+item} style={styles.productImage} />
       </View>
     );
   };
@@ -68,8 +68,8 @@ const ProductInfo = () => {
         barStyle="dark-content"
       />
       <ScrollView>
-        <View style={styles.container1}>
-          <View style={styles.container2}>
+        <View style={styles.allContent}>
+          <View style={styles.buttonWrapper}>
             <BackToPage handler={navigation.goBack} />
           </View>
 
@@ -86,7 +86,7 @@ const ProductInfo = () => {
             )}
           />
 
-          <View style={styles.container3}>
+          <View style={styles.sliderContainer}>
             {product?.productImageList
               ? product.productImageList.map((data, index) => {
                   const opacity = position.interpolate({
@@ -109,27 +109,27 @@ const ProductInfo = () => {
               : null}
           </View>
         </View>
-        <View style={styles.container4}>
-          <View style={styles.container5}>
+        <View style={styles.infoAboutProduct}>
+          <View style={styles.shoppingLabel}>
             <Entypo name="shopping-cart" style={styles.shoppingCart} />
-            <Text style={styles.text1}>Shopping</Text>
+            <Text style={styles.shoppingLabelText}>Shopping</Text>
           </View>
-          <View style={styles.container6}>
-            <Text style={styles.text2}>{product?.productName}</Text>
+          <View style={styles.ProductNameWrapper}>
+            <Text style={styles.productName}>{product?.productName}</Text>
             <Ionicons name="link-outline" style={styles.linkOutline} />
           </View>
-          <Text style={styles.text3}>{product?.description}</Text>
-          <View style={styles.container7}>
-            <View style={styles.container8}>
-              <View style={styles.container9}>
+          <Text style={styles.productDescription}>{product?.description}</Text>
+          <View style={styles.locationContainer}>
+            <View style={styles.pointLocation}>
+              <View style={styles.locationButtonWrapper}>
                 <Entypo name="location-pin" style={styles.locationPin} />
               </View>
               <Text> Nemiga 57-15,{'\n'} Minsk</Text>
             </View>
             <Entypo name="chevron-right" style={styles.chevronRight} />
           </View>
-          <View style={styles.container10}>
-            <Text style={styles.text4}>$ {product?.productPrice}.00</Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.textPrice}>$ {product?.productPrice}.00</Text>
             <Text>
               Tax Rate 2%~ ${product?.productPrice! / 20} ($
               {product?.productPrice! + product?.productPrice! / 20})
@@ -137,9 +137,9 @@ const ProductInfo = () => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.container11}>
-        <TouchableOpacity style={styles.container12} onPress={addToCart}>
-          <Text style={styles.text5}>
+      <View style={styles.wrapperButtonAddToCart}>
+        <TouchableOpacity style={styles.buttonAddToCart} onPress={addToCart}>
+          <Text style={styles.status}>
             {product?.isAvailable ? 'Add to cart' : 'Not Avialable'}
           </Text>
         </TouchableOpacity>

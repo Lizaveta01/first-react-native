@@ -25,22 +25,22 @@ const ProductInCard = ({
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={styles.container1}
+        style={styles.imageContainer}
         onPress={() =>
           navigation.navigate('ProductInfo', {productID: product.id})
         }>
-        <Image source={JSON.parse(product.productImage)} style={styles.image} />
+        <Image source={+product.productImage} style={styles.image} />
       </TouchableOpacity>
-      <View style={styles.container2}>
+      <View style={styles.infoContainer}>
         <View>
-          <Text style={styles.text1}>{product.productName}</Text>
-          <View style={styles.container3}>
-            <Text style={styles.text2}>${product.productPrice}</Text>
+          <Text style={styles.name}>{product.productName}</Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.price}>${product.productPrice}</Text>
             <Text>(${product.productPrice + product.productPrice / 20})</Text>
           </View>
         </View>
-        <View style={styles.container4}>
-          <View style={styles.container5}>
+        <View style={styles.toolsContainer}>
+          <View style={styles.counerContainer}>
             <TouchableOpacity
               style={styles.iconCircle}
               onPress={() => decreaseItem(product.id)}>

@@ -58,20 +58,20 @@ const Home = () => {
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={styles.text}>Loffi Shop &amp; Servise </Text>
+          <Text style={styles.shopTitle}>Loffi Shop &amp; Servise </Text>
           <Text style={styles.description}>
             Audio shop on Nemiga street. This shop offers both products and
             services{' '}
           </Text>
         </View>
 
-        <View style={styles.container1}>
-          <View style={styles.container2}>
-            <View style={styles.container3}>
-              <Text style={styles.textStyle1}>Products</Text>
-              <Text style={styles.textStyle2}>41</Text>
+        <View style={styles.productsCategoryWrapper}>
+          <View style={styles.categoryLine}>
+            <View style={styles.categoryWrapper}>
+              <Text style={styles.category}>Products</Text>
+              <Text style={styles.countItems}>41</Text>
             </View>
-            <Text style={styles.textStyle3}> See all</Text>
+            <Text style={styles.textLink}> See all</Text>
           </View>
           <View style={styles.productsContainer}>
             {products.map(data => {
@@ -80,13 +80,13 @@ const Home = () => {
           </View>
         </View>
 
-        <View style={styles.container1}>
-          <View style={styles.container2}>
-            <View style={styles.container3}>
-              <Text style={styles.textStyle1}>Accessories</Text>
-              <Text style={styles.textStyle2}>78</Text>
+        <View style={styles.productsCategoryWrapper}>
+          <View style={styles.categoryLine}>
+            <View style={styles.categoryWrapper}>
+              <Text style={styles.category}>Accessories</Text>
+              <Text style={styles.countItems}>78</Text>
             </View>
-            <Text style={styles.textStyle3}> See all</Text>
+            <Text style={styles.textLink}> See all</Text>
           </View>
           <View style={styles.productsContainer}>
             {accessory.map(data => {

@@ -82,12 +82,12 @@ const Cart = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.container1}>
+        <View style={styles.topLineContainer}>
           <BackToPage handler={navigation.goBack} />
-          <Text style={styles.text1}>Order Details</Text>
+          <Text style={styles.sreenName}>Order Details</Text>
         </View>
-        <Text style={styles.text2}>My Cart</Text>
-        <View style={styles.container2}>
+        <Text style={styles.cartTitle}>My Cart</Text>
+        <View style={styles.productsContainer}>
           {products
             ? products.map(item => (
                 <ProductInCard
@@ -101,19 +101,19 @@ const Cart = () => {
             : null}
         </View>
         <View>
-          <View style={styles.container3}>
-            <Text style={styles.text3}>Delivery Location</Text>
-            <View style={styles.container4}>
-              <View style={styles.container5}>
-                <View style={styles.container6}>
+          <View style={styles.orderOptionsContainer}>
+            <Text style={styles.optionTitle}>Delivery Location</Text>
+            <View style={styles.orderOptionsContainerInfo}>
+              <View style={styles.infoOptionWrapper}>
+                <View style={styles.buttonWrapper}>
                   <MaterialCommunityIcons
                     name="truck-delivery-outline"
                     style={styles.iconDelivery}
                   />
                 </View>
                 <View>
-                  <Text style={styles.text4}>2 Mira St.</Text>
-                  <Text style={styles.text5}>220036, Minsk</Text>
+                  <Text style={styles.optionSubTitle}>2 Mira St.</Text>
+                  <Text style={styles.oprtionDescription}>220036, Minsk</Text>
                 </View>
               </View>
               <MaterialCommunityIcons
@@ -122,16 +122,16 @@ const Cart = () => {
               />
             </View>
           </View>
-          <View style={styles.container3}>
-            <Text style={styles.text6}>Payment Method</Text>
-            <View style={styles.container8}>
-              <View style={styles.container9}>
-                <View style={styles.container10}>
-                  <Text style={styles.text7}>VISA</Text>
+          <View style={styles.orderOptionsContainer}>
+            <Text style={styles.optionTitle}>Payment Method</Text>
+            <View style={styles.orderOptionsContainerInfo}>
+              <View style={styles.infoOptionWrapper}>
+                <View style={styles.buttonWrapper}>
+                  <Text style={styles.textInIcon}>VISA</Text>
                 </View>
                 <View>
-                  <Text style={styles.text8}>Visa Classic</Text>
-                  <Text style={styles.text9}>****-9092</Text>
+                  <Text style={styles.optionSubTitle}>Visa Classic</Text>
+                  <Text style={styles.oprtionDescription}>****-9092</Text>
                 </View>
               </View>
               <MaterialCommunityIcons
@@ -140,29 +140,31 @@ const Cart = () => {
               />
             </View>
           </View>
-          <View style={styles.container11}>
-            <Text style={styles.text10}>Order Info</Text>
-            <View style={styles.container12}>
-              <Text style={styles.text11}>Subtotal</Text>
-              <Text style={styles.text12}>${total}.00</Text>
+          <View style={styles.orderInfoWrapper}>
+            <Text style={styles.orderTitle}>Order Info</Text>
+            <View style={styles.subtotalTaxContainer}>
+              <Text style={styles.totalTitle}>Subtotal</Text>
+              <Text style={styles.totalSubtitle}>${total}.00</Text>
             </View>
-            <View style={styles.container13}>
-              <Text style={styles.text11}>Shipping Tax</Text>
-              <Text style={styles.text12}>${total / 20}</Text>
+            <View style={styles.totalTaxContainer}>
+              <Text style={styles.totalTitle}>Shipping Tax</Text>
+              <Text style={styles.totalSubtitle}>${total / 20}</Text>
             </View>
-            <View style={styles.container4}>
-              <Text style={styles.text11}>Total</Text>
-              <Text style={styles.text13}>${total + total / 20}</Text>
+            <View style={styles.orderOptionsContainerInfo}>
+              <Text style={styles.mainTotalPrice}>Total</Text>
+              <Text style={styles.mainTotalPrice}>${total + total / 20}</Text>
             </View>
           </View>
         </View>
       </ScrollView>
 
-      <View style={styles.container15}>
+      <View style={styles.buttonPositionWrapper}>
         <TouchableOpacity
           onPress={() => (total !== 0 ? checkOut() : null)}
-          style={styles.container16}>
-          <Text style={styles.text14}>CHECKOUT (${total + total / 20} )</Text>
+          style={styles.wrapperButtonOrderText}>
+          <Text style={styles.buttonOrderText}>
+            CHECKOUT (${total + total / 20} )
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

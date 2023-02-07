@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  container1: {
+  imageContainer: {
     width: '30%',
     height: 100,
     padding: 14,
@@ -24,37 +24,37 @@ export const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'contain',
   },
-  container2: {
+  infoContainer: {
     flex: 1,
     height: '100%',
     justifyContent: 'space-around',
   },
-  container3: {
+  priceContainer: {
     marginTop: 4,
     flexDirection: 'row',
     alignItems: 'center',
     opacity: 0.6,
   },
-  text1: {
+  name: {
     fontSize: 14,
     maxWidth: '100%',
     color: Colors.BLACK,
     fontWeight: '600',
     letterSpacing: 1,
   },
-  text2: {
+  price: {
     fontSize: 14,
     maxWidth: '100%',
     color: Colors.BLACK,
     fontWeight: '600',
     letterSpacing: 1,
   },
-  container4: {
+  toolsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  container5: {
+  counerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 20,

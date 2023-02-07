@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 16,
   },
-  text: {
+  shopTitle: {
     fontSize: 26,
     color: Colors.BLACK,
     fontWeight: '500',
@@ -41,32 +41,32 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     lineHeight: 24,
   },
-  container1: {
+  productsCategoryWrapper: {
     padding: 16,
   },
-  container2: {
+  categoryLine: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  container3: {
+  categoryWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  textStyle1: {
+  category: {
     fontSize: 18,
     color: Colors.BLACK,
     fontWeight: '500',
     letterSpacing: 1,
   },
-  textStyle2: {
+  countItems: {
     fontSize: 14,
     color: Colors.BLACK,
     fontWeight: '400',
     opacity: 0.5,
     marginLeft: 10,
   },
-  textStyle3: {
+  textLink: {
     fontSize: 14,
     color: Colors.BLUE,
     fontWeight: '400',
