@@ -1,12 +1,12 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IProduct} from '../../models/IProduct';
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {productScreenProp} from '../../models/Navigation';
+import {ProductScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-type props = {
+type Props = {
   product: IProduct;
   key: number;
   removeItem: (value: number) => void;
@@ -15,8 +15,8 @@ type props = {
 };
 
 const ProductInCard = React.memo(
-  ({product, removeItem, increaseItem, decreaseItem}: props) => {
-    const navigation = useNavigation<productScreenProp>();
+  ({product, removeItem, increaseItem, decreaseItem}: Props) => {
+    const navigation = useNavigation<ProductScreenProp>();
     console.log('update product', product.counter);
 
     return (

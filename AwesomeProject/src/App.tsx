@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './screens/homeSreen/Home';
-import Cart from './screens/cartScreen/Cart';
-import ProductInfo from './screens/productInfoScreen/ProductInfo';
+import Home from './screens/HomeSreen/Home';
+import Cart from './screens/СartScreen/Cart';
+import ProductInfo from './screens/ProductInfoScreen/ProductInfo';
 
 const App = () => {
   const Stack = createNativeStackNavigator();

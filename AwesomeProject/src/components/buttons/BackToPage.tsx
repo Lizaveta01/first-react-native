@@ -2,12 +2,12 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Colors} from '../../constants/colors';
-import {productScreenProp} from '../../models/Navigation';
+import {ProductScreenProp} from '../../models/Navigation';
 
-type props = {
-  navigation: productScreenProp;
+type Props = {
+  navigation: ProductScreenProp;
 };
-const BackToPage = ({navigation}: props) => {
+const BackToPage = ({navigation}: Props) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.goBack()}

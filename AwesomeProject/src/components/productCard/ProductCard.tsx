@@ -2,17 +2,17 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {IProduct} from '../../models/IProduct';
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {productScreenProp} from '../../models/Navigation';
+import {ProductScreenProp} from '../../models/Navigation';
+import {styles} from './styles';
 
-type props = {
+type Props = {
   data: IProduct;
   key: number;
 };
 
-const ProductCard = ({data}: props) => {
-  const navigation = useNavigation<productScreenProp>();
+const ProductCard = ({data}: Props) => {
+  const navigation = useNavigation<ProductScreenProp>();
 
   return (
     <TouchableOpacity

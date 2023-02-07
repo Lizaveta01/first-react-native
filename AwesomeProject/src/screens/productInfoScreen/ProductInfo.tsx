@@ -1,4 +1,4 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -6,7 +6,6 @@ import {
   Animated,
   ScrollView,
   TouchableOpacity,
-  FlatList,
   Image,
   useWindowDimensions,
 } from 'react-native';
@@ -14,22 +13,21 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {Colors} from '../../constants/colors';
 import {productsData} from '../../constants/data';
 import {IProduct} from '../../models/IProduct';
-import {
-  ProductInfoScreenRouteProp,
-  productScreenProp,
-} from '../../models/Navigation';
+import {ProductScreenProp, RootStackParamList} from '../../models/Navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
-import {CustomStatusBar} from '../../components/customStatusBar/CustomStatusBar';
-import {addItemToStorage} from '../../utils/addItemToStorage';
+import {CustomStatusBar} from '../../components/CustomStatusBar/CustomStatusBar';
 import BackToPage from '../../components/buttons/BackToPage';
+import * as ProductService from '../../utils/productService';
 
 type product = {
   item: string;
 };
 
+type ProductInfoScreenRouteProp = RouteProp<RootStackParamList, 'ProductInfo'>;
+
 const ProductInfo = () => {
-  const navigation = useNavigation<productScreenProp>();
+  const navigation = useNavigation<ProductScreenProp>();
   const route = useRoute<ProductInfoScreenRouteProp>();
   const {productID} = route.params;
   const [product, setProduct] = useState<IProduct | null>(null);
@@ -58,7 +56,7 @@ const ProductInfo = () => {
   };
 
   const addToCart = () => {
-    product?.isAvailable ? addItemToStorage(productID) : null;
+    product?.isAvailable ? ProductService.add(productID) : null;
   };
 
   return (
@@ -73,7 +71,7 @@ const ProductInfo = () => {
             <BackToPage navigation={navigation} />
           </View>
 
-          <FlatList
+          <Animated.FlatList
             data={product?.productImageList ? product.productImageList : null}
             horizontal
             renderItem={renderProduct}
@@ -82,7 +80,7 @@ const ProductInfo = () => {
             snapToInterval={width}
             onScroll={Animated.event(
               [{nativeEvent: {contentOffset: {x: scrollX}}}],
-              {useNativeDriver: false},
+              {useNativeDriver: true},
             )}
           />
 

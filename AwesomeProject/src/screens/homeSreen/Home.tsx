@@ -12,17 +12,17 @@ import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {IProduct} from '../../models/IProduct';
 import {productsData} from '../../constants/data';
-import ProductCard from '../../components/productCard/RroductCard';
 import {styles} from './styles';
 import {Colors} from '../../constants/colors';
 import {useNavigation} from '@react-navigation/native';
-import {productScreenProp} from '../../models/Navigation';
+import {ProductScreenProp} from '../../models/Navigation';
+import ProductCard from '../../components/ProductCard/ProductCard';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);
   const [accessory, setAccessory] = useState<IProduct[] | []>([]);
 
-  const navigation = useNavigation<productScreenProp>();
+  const navigation = useNavigation<ProductScreenProp>();
 
   useEffect(() => {
     getDataFromDB(productsData);

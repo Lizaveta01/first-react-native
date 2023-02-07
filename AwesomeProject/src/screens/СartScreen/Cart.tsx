@@ -8,46 +8,30 @@ import {
   ToastAndroid,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {productScreenProp} from '../../models/Navigation';
+import {ProductScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styles';
-import {productsData} from '../../constants/data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IProduct} from '../../models/IProduct';
-import ProductInCard from '../../components/productInCart/RroductInCart';
-import {CartStorage} from '../../models/CartStorage';
+import ProductInCard from '../../components/ProductInCart/ProductInCart';
 import BackToPage from '../../components/buttons/BackToPage';
-import {updateStorage} from '../../utils/updateStorage';
+import * as ProductService from '../../utils/productService';
 
 const Cart = () => {
-  const navigation = useNavigation<productScreenProp>();
+  const navigation = useNavigation<ProductScreenProp>();
   const [products, setProducts] = useState<IProduct[] | []>([]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    getDataFromDB();
+    ProductService.get().then(data => {
+      setProducts(data);
+    });
   }, []);
 
   useEffect(() => {
     getTotal(products);
-    updateStorage(products);
+    ProductService.update(products);
   }, [products]);
-
-  const getDataFromDB = async () => {
-    const storageCartItem: string = await AsyncStorage.getItem('cartItem');
-    const cartItem: CartStorage = JSON.parse(storageCartItem);
-    const productData: IProduct[] = [];
-    console.log('cartItem-cart', cartItem);
-    if (cartItem) {
-      productsData.forEach(product => {
-        if (cartItem.hasOwnProperty(product.id)) {
-          product.counter = cartItem[product.id];
-          productData.push(product);
-        }
-      });
-      setProducts(productData);
-    }
-  };
 
   const handleRemoveItem = (id: number) => {
     setProducts(products.filter(item => item.id !== id));
@@ -60,6 +44,7 @@ const Cart = () => {
       }
       return item;
     });
+
     setProducts(newProductsList);
   };
 
