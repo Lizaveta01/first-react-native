@@ -5,13 +5,12 @@ import {Colors} from '../../constants/colors';
 import {ProductScreenProp} from '../../models/Navigation';
 
 type Props = {
-  navigation: ProductScreenProp;
+  handler: () => void;
 };
-const BackToPage = ({navigation}: Props) => {
+
+const BackToPage = ({handler}: Props) => {
   return (
-    <TouchableOpacity
-      onPress={() => navigation.goBack()}
-      style={styles.buttonContainer}>
+    <TouchableOpacity onPress={handler} style={styles.buttonContainer}>
       <MaterialCommunityIcons name="chevron-left" style={styles.chevronLeft} />
     </TouchableOpacity>
   );

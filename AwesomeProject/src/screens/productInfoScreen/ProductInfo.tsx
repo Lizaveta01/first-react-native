@@ -59,6 +59,7 @@ const ProductInfo = () => {
     product?.isAvailable ? ProductService.add(productID) : null;
   };
 
+
   return (
     <View style={styles.container}>
       <CustomStatusBar
@@ -68,7 +69,7 @@ const ProductInfo = () => {
       <ScrollView>
         <View style={styles.container1}>
           <View style={styles.container2}>
-            <BackToPage navigation={navigation} />
+            <BackToPage handler={navigation.goBack} />
           </View>
 
           <Animated.FlatList

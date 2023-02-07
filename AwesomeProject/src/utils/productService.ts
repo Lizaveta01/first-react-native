@@ -1,4 +1,3 @@
-import {ToastAndroid} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {CartStorage} from '../models/CartStorage';
 import {IProduct} from '../models/IProduct';
@@ -11,7 +10,6 @@ export const get = async (): Promise<IProduct[]> => {
   const storageCartItem: string = await AsyncStorage.getItem(CART_ITEMS);
   const cartItem: CartStorage = JSON.parse(storageCartItem);
   const productData: IProduct[] = [];
-  console.log('cartItem-cart', cartItem);
   if (cartItem) {
     productsData.forEach(product => {
       if (cartItem.hasOwnProperty(product.id)) {
@@ -20,6 +18,7 @@ export const get = async (): Promise<IProduct[]> => {
       }
     });
   }
+
   return productData;
 };
 
@@ -38,7 +37,6 @@ export const add = async (productID: number) => {
     }
 
     await AsyncStorage.setItem(CART_ITEMS, JSON.stringify(cartItem));
-    ToastAndroid.show('Item Added Successfully to cart', ToastAndroid.SHORT);
   } catch (error) {
     return error;
   }
@@ -50,9 +48,7 @@ export const remove = async (productID: number) => {
     let cartItem: CartStorage = JSON.parse(storageCartItem);
 
     delete cartItem[productID];
-
     await AsyncStorage.setItem(CART_ITEMS, JSON.stringify(cartItem));
-    ToastAndroid.show('Item deleted from cart', ToastAndroid.SHORT);
   } catch (error) {
     return error;
   }

@@ -1,12 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  ToastAndroid,
-} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ProductScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -16,6 +10,9 @@ import {IProduct} from '../../models/IProduct';
 import ProductInCard from '../../components/ProductInCart/ProductInCart';
 import BackToPage from '../../components/buttons/BackToPage';
 import * as ProductService from '../../utils/productService';
+import {StorageItems} from '../../constants/storageItems';
+
+const {CART_ITEMS} = StorageItems;
 
 const Cart = () => {
   const navigation = useNavigation<ProductScreenProp>();
@@ -33,31 +30,36 @@ const Cart = () => {
     ProductService.update(products);
   }, [products]);
 
-  const handleRemoveItem = (id: number) => {
-    setProducts(products.filter(item => item.id !== id));
-  };
+  const handleRemoveItem = useCallback((id: number) => {
+    setProducts(prevProducts => prevProducts.filter(item => item.id !== id));
+  }, []);
 
-  const handleIncreaseItem = (id: number) => {
-    const newProductsList = products.map(item => {
-      if (item.id === id) {
-        item.counter! += 1;
-      }
-      return item;
-    });
-
-    setProducts(newProductsList);
-  };
-
-  const handleDecreaseItem = (id: number) => {
-    setProducts(
-      products.map(item => {
-        if (item.id === id) {
-          item.counter! < 1 ? item.counter === 0 : item.counter!--;
-        }
-        return item;
+  const handleIncreaseItem = useCallback((id: number) => {
+    setProducts(prevProducts =>
+      prevProducts.map(item => {
+        const newItem = {
+          ...item,
+          counter: item.id === id ? item.counter! + 1 : item.counter,
+        };
+        return newItem;
       }),
     );
-  };
+  }, []);
+
+  const handleDecreaseItem = useCallback((id: number) => {
+    setProducts(prevProducts =>
+      prevProducts.map(item => {
+        const newItem = {
+          ...item,
+          counter:
+            item.id === id && item.counter !== 0
+              ? item.counter! - 1
+              : item.counter,
+        };
+        return newItem;
+      }),
+    );
+  }, []);
 
   const getTotal = (productData: IProduct[]) => {
     let totalValue = productData.reduce(
@@ -70,12 +72,10 @@ const Cart = () => {
 
   const checkOut = async () => {
     try {
-      await AsyncStorage.removeItem('cartItem');
+      await AsyncStorage.removeItem(CART_ITEMS);
     } catch (error) {
       return error;
     }
-
-    ToastAndroid.show('Items will be Deliverd SOON!', ToastAndroid.SHORT);
     navigation.navigate('Home');
   };
 
@@ -83,7 +83,7 @@ const Cart = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.container1}>
-          <BackToPage navigation={navigation} />
+          <BackToPage handler={navigation.goBack} />
           <Text style={styles.text1}>Order Details</Text>
         </View>
         <Text style={styles.text2}>My Cart</Text>

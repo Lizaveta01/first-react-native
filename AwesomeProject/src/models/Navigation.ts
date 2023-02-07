@@ -1,6 +1,6 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-export type ProductScreenProp = StackNavigationProp<RootStackParamList>;
+export type ProductScreenProp = NativeStackNavigationProp<RootStackParamList>;
 
 export type RootStackParamList = {
   Home: undefined;
