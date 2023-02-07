@@ -13,18 +13,20 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {Colors} from '../../constants/colors';
 import {productsData} from '../../constants/data';
 import {IProduct} from '../../models/IProduct';
-import {ProductScreenProp, RootStackParamList} from '../../models/Navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 import {CustomStatusBar} from '../../components/CustomStatusBar/CustomStatusBar';
 import BackToPage from '../../components/buttons/BackToPage';
 import * as ProductService from '../../utils/productService';
-
-type product = {
-  item: string;
-};
+import {RootStackParamList} from 'src/App';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type ProductInfoScreenRouteProp = RouteProp<RootStackParamList, 'ProductInfo'>;
+export type ProductScreenProp = NativeStackNavigationProp<RootStackParamList>;
+
+type Product = {
+  item: string;
+};
 
 const ProductInfo = () => {
   const navigation = useNavigation<ProductScreenProp>();
@@ -47,7 +49,7 @@ const ProductInfo = () => {
     setProduct(targetProduct[0]);
   };
 
-  const renderProduct = ({item}: product) => {
+  const renderProduct = ({item}: Product) => {
     return (
       <View style={[styles.productContainer, {width: width}]}>
         <Image source={JSON.parse(item)} style={styles.productImage} />
@@ -58,7 +60,6 @@ const ProductInfo = () => {
   const addToCart = () => {
     product?.isAvailable ? ProductService.add(productID) : null;
   };
-
 
   return (
     <View style={styles.container}>

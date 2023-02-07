@@ -3,8 +3,8 @@ import {IProduct} from '../../models/IProduct';
 import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {ProductScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ProductScreenProp} from 'src/screens/ProductInfoScreen/ProductInfo';
 
 type Props = {
   product: IProduct;

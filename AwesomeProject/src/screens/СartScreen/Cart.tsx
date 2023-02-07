@@ -2,7 +2,6 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ProductScreenProp} from '../../models/Navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,6 +10,7 @@ import ProductInCard from '../../components/ProductInCart/ProductInCart';
 import BackToPage from '../../components/buttons/BackToPage';
 import * as ProductService from '../../utils/productService';
 import {StorageItems} from '../../constants/storageItems';
+import {ProductScreenProp} from '../ProductInfoScreen/ProductInfo';
 
 const {CART_ITEMS} = StorageItems;
 

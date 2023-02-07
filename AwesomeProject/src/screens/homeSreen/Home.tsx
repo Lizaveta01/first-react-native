@@ -15,8 +15,8 @@ import {productsData} from '../../constants/data';
 import {styles} from './styles';
 import {Colors} from '../../constants/colors';
 import {useNavigation} from '@react-navigation/native';
-import {ProductScreenProp} from '../../models/Navigation';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import {ProductScreenProp} from '../ProductInfoScreen/ProductInfo';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[] | []>([]);

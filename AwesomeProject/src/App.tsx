@@ -5,8 +5,14 @@ import Home from './screens/HomeSreen/Home';
 import Cart from './screens/СartScreen/Cart';
 import ProductInfo from './screens/ProductInfoScreen/ProductInfo';
 
+export type RootStackParamList = {
+  Home: undefined;
+  ProductInfo: {productID: number};
+  Cart: undefined;
+};
+
 const App = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <NavigationContainer>
